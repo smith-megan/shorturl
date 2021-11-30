@@ -1,6 +1,9 @@
 import {combineReducers} from 'redux';
 import data from './data';
+import params from './params'
 
-export default combineReducers({
-data
+const rootReducer=combineReducers({
+data,
+params
 })
+export default rootReducer

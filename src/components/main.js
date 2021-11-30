@@ -12,23 +12,22 @@ class Main extends React.Component{
 render() {
   const results=this.props.data.result || []
   return(
-  <div>
-   <h1>URL Shortener featuring redux-saga for Ringy</h1>
+  <div className="main-div">
+   <h1 className="main-title">URL Shortener featuring Redux-Saga</h1>
+   <div className="main-card">
    <form onSubmit={(e)=>{
      e.preventDefault()
-   console.log(e.target.url.value)
     this.props.requestApiData(e.target.url.value);
-   console.log(this.props.data.result)
-   console.log(this.results)
   }}>
     Url to Shorten:
    <input name="url"></input>
-   <input type="submit"></input>
+   <input className="button" type="submit"></input>
    </form>
-    <div>
-      {results.original_link}
-      {results.short_link}
+    <div className="results">
+      <p><a href={results.original_link}>{results.original_link}</a></p>
+      <p><a href={"https://www."+results.short_link}>{results.short_link}</a></p>
       </div>
+    </div>
   </div>
 )}}
 
