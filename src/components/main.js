@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux";
 import {requestApiData} from "../actions"
@@ -8,20 +8,35 @@ class Main extends React.Component{
   componentDidMount(){
     this.props.requestApiData();
   }
-  person=(x,i)=>
-    <div key={x.id.value}>
-      <h1>{x.email}</h1>
-      <h1>{x.gender}</h1>
-      <h1>{x.name.first}</h1>
-    </div>
 
 render() {
-  const {results=[]}=this.props.data
+  const results=this.props.data.result || []
   return(
   <div>
    <p>hello</p>
+   <form onSubmit={(e)=>{e.preventDefault()
+   console.log(this.props.data.result)
+   console.log(this.results)
+  }
+     //throw in state?
+   }>
+    Url to Shorten:
+   <input></input>
+   <input type="submit"></input>
+   </form>
     <div>
-      {results.map(this.person)}
+      {/* <p>{this.props.data.result.code}</p> */}
+      {results.short_link
+      // .foreach((index, i)=>{return (
+      //   <div key={i}>
+      //     <h1>Your original url:</h1>
+      //     <p>{index.result.original_link}</p>
+      //     <h1>Your shortened url:</h1>
+      //     <p>{index.result.short_link}</p>
+    
+        // </div>)
+      // })
+      }
       </div>
   </div>
 )}}
