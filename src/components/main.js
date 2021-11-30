@@ -13,16 +13,14 @@ render() {
   const results=this.props.data.result || []
   return(
   <div>
-   <p>hello</p>
+   <h1>URL Shortener featuring redux-saga for Ringy</h1>
    <form onSubmit={(e)=>{
      e.preventDefault()
    console.log(e.target.url.value)
     this.props.requestApiData(e.target.url.value);
    console.log(this.props.data.result)
    console.log(this.results)
-  }
-     //throw in state?
-   }>
+  }}>
     Url to Shorten:
    <input name="url"></input>
    <input type="submit"></input>
