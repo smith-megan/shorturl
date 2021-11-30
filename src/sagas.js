@@ -7,8 +7,8 @@ import{fetchData} from'./api';
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* getApiData(action) {
    try {
-     const data = yield call(fetchData,'https://www.google.com/');
-     console.log(data)
+     console.log(action, "test")
+     const data = yield call(fetchData,action.params);
      yield put(receiveApiData(data));
     } catch (e) {
     console.log(e.message)

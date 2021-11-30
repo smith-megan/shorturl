@@ -5,38 +5,31 @@ import {requestApiData} from "../actions"
 
 class Main extends React.Component{
 
-  componentDidMount(){
-    this.props.requestApiData();
-  }
+  // componentDidMount(){
+  //   this.props.requestApiData("testingplez");
+  // }
 
 render() {
   const results=this.props.data.result || []
   return(
   <div>
    <p>hello</p>
-   <form onSubmit={(e)=>{e.preventDefault()
+   <form onSubmit={(e)=>{
+     e.preventDefault()
+   console.log(e.target.url.value)
+    this.props.requestApiData(e.target.url.value);
    console.log(this.props.data.result)
    console.log(this.results)
   }
      //throw in state?
    }>
     Url to Shorten:
-   <input></input>
+   <input name="url"></input>
    <input type="submit"></input>
    </form>
     <div>
-      {/* <p>{this.props.data.result.code}</p> */}
-      {results.short_link
-      // .foreach((index, i)=>{return (
-      //   <div key={i}>
-      //     <h1>Your original url:</h1>
-      //     <p>{index.result.original_link}</p>
-      //     <h1>Your shortened url:</h1>
-      //     <p>{index.result.short_link}</p>
-    
-        // </div>)
-      // })
-      }
+      {results.original_link}
+      {results.short_link}
       </div>
   </div>
 )}}
